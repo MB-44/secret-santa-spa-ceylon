@@ -1,0 +1,73 @@
+/* Navbar container */
+.navbar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+  
+  /* Profile Icon */
+  .profileIcon {
+    cursor: pointer;
+  }
+  
+  .iconImage {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  
+  /* Dropdown Menu */
+  .menu {
+    position: absolute;
+    top: 70px;
+    right: 10px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    width: 250px;
+    z-index: 1000;
+  }
+  
+  .menuList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .menuItem {
+    font-size: 1rem;
+    padding: 0.75rem 0;
+    cursor: pointer;
+    color: #333;
+    text-align: center;
+  }
+  
+  .menuItem:hover {
+    background-color: #f4f4f4;
+    border-radius: 4px;
+  }
+  
+  .menuItemSignOut {
+    color: #007bff;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 1rem;
+    cursor: pointer;
+  }
+  
+  .menuItemSignOut:hover {
+    color: #0056b3;
+  }
+  
+  .divider {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 1rem 0;
+  }
+  
