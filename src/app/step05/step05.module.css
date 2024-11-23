@@ -1,0 +1,96 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.card {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  text-align: center;
+}
+
+.title {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+  text-align: left;
+}
+
+.datePicker {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdownButton {
+  background-color: #f4f4f4;
+  color: #333;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.dropdownContent {
+  display: none;
+  /* border-color: #0056b3; */
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 120px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.dropdown:hover .dropdownContent {
+  display: block;
+}
+
+.dropdownItem {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.dropdownItem:hover {
+  background-color: #f0f0f0;
+}
+
+.continueButton {
+  
+  border: #0056b3;
+  background-color: #c0c6cd;
+  color: #0f6df1;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.continueButton:hover {
+  background-color: #b6c3d1;
+}
+
+@media (min-width: 768px) {
+  .container {
+    justify-content: flex-start; /* Aligns content to the left */
+  }
+
+  .card {
+    margin-left: 10%; /* Adjust the left position */
+    transform: translateY(-50%); /* Center vertically */
+    top: 50%; /* Relative to the viewport */
+    position: absolute;
+  }
+}

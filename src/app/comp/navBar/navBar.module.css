@@ -1,28 +1,41 @@
 /* Navbar container */
 .navbar {
-    position: relative;
+  /* flex-end for justify-content */
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+  padding: 1rem 2rem;
+  background-color: #c8d7e6;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  position: relative;
+  }
+  
+.logoContainer {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    padding: 1rem;
-    background-color: #f8f9fa;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-  }
-  
-  /* Profile Icon */
-  .profileIcon {
+}
+
+
+.logo {
+  height: 40px;
+  width: auto;
+  cursor: pointer;
+}
+
+
+.profileIcon {
     cursor: pointer;
-  }
+}
   
-  .iconImage {
+.iconImage {
+    margin: 36px;
     width: 40px;
     height: 40px;
     border-radius: 50%;
-  }
+}
   
-  /* Dropdown Menu */
-  .menu {
+.menu {
     position: absolute;
     top: 70px;
     right: 10px;
@@ -32,42 +45,42 @@
     padding: 1rem;
     width: 250px;
     z-index: 1000;
-  }
+}
   
-  .menuList {
+.menuList {
     list-style: none;
     padding: 0;
     margin: 0;
-  }
+}
   
-  .menuItem {
+.menuItem {
     font-size: 1rem;
     padding: 0.75rem 0;
     cursor: pointer;
     color: #333;
     text-align: center;
-  }
+}
   
-  .menuItem:hover {
+.menuItem:hover {
     background-color: #f4f4f4;
     border-radius: 4px;
-  }
+}
   
-  .menuItemSignOut {
+.menuItemSignOut {
     color: #007bff;
     font-weight: bold;
     text-align: center;
     margin-top: 1rem;
     cursor: pointer;
-  }
+}
   
-  .menuItemSignOut:hover {
+.menuItemSignOut:hover {
     color: #0056b3;
-  }
+}
   
-  .divider {
+.divider {
     border: none;
     border-top: 1px solid #ddd;
     margin: 1rem 0;
-  }
+}
   
