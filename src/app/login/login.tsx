@@ -1,27 +1,49 @@
 "use client";
+
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 import styles from "./login.module.css";
 
-const Login: React.FC = () => {
+const LoginPage: React.FC = () => {
+  const router = useRouter();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Email:", email);
-    console.log("Password:", password);
-  };
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
+    try {
+      const response = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (!response.ok) throw new Error("Invalid login credentials");
+
+      const { token } = await response.json();
+
+      document.cookie  = `token=${token}; path=/; HttpOnly; SamSite=Strict`;
+      // Save token to localStorage or cookies
+      // localStorage.setItem("token", token);
+
+      // Redirect to dashboard
+      alert("Login successful");
+      router.push("/mainDashboard");
+    } catch (err: any) {
+      setError(err.message || "An unexpected error occurred");
+    }
   };
 
   return (
-    // <div>hello</div>
     <div className={styles.container}>
-      <form onSubmit={handleSubmit} className={styles.form}>
+      <form onSubmit={handleLogin} className={styles.form}>
         <h2 className={styles.title}>Login</h2>
+        {error && <p className={styles.error}>{error}</p>}
         <div className={styles.inputGroup}>
           <label htmlFor="email" className={styles.label}>
             Email
@@ -29,9 +51,9 @@ const Login: React.FC = () => {
           <input
             type="email"
             id="email"
+            className={styles.input}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className={styles.input}
             required
           />
         </div>
@@ -39,30 +61,27 @@ const Login: React.FC = () => {
           <label htmlFor="password" className={styles.label}>
             Password
           </label>
-          <div className={styles.passwordWrapper}>
-            <input
-              type={showPassword ? "text" : "password"}
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className={styles.input}
-              required
-            />
-            <button
-              type="button"
-              className={styles.toggleButton}
-              onClick={togglePasswordVisibility}
-            >
-              {showPassword ? "Hide" : "Show"}
-            </button>
-          </div>
+          <input
+            type="password"
+            id="password"
+            className={styles.input}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
         </div>
         <button type="submit" className={styles.button}>
           Login
         </button>
+        <p className={styles.link}>
+          Don’t have an account?{" "}
+          <a href="/register" className={styles.registerLink}>
+            Register here
+          </a>
+        </p>
       </form>
     </div>
   );
 };
 
-export default Login;
+export default LoginPage;

@@ -13,13 +13,18 @@ const NavigationBar: React.FC = () => {
 
     return(
         <div className={styles.navbar}>
-            {/* <div>
+            {/* website logo */}
+            <div className={styles.logoContainer}>
                 <a href="">
-                    <img src="../../images/logo.png" alt="logo" />
+                    <img 
+                        src="../../images/logo.png" 
+                        alt="logo" 
+                        className={styles.logo}
+                    />
                 </a>
-            </div> */}
+            </div>
 
-
+            {/* profile icon */}
             <div className={styles.profileIcon} onClick={toggleMenu}>
                 <img 
                     src="../src" 
@@ -31,9 +36,9 @@ const NavigationBar: React.FC = () => {
             {isOpen && (
             <div className={styles.menu}>
                 <ul className={styles.menuList}>
-                    <li className={styles.menuItem}>My Wish List</li>
+                    {/* <li className={styles.menuItem}>My Wish List</li>
                     <li className={styles.menuItem}>My Drawn Name</li>
-                    <li className={styles.menuItem}>My Group Page</li>
+                    <li className={styles.menuItem}>My Group Page</li> */}
                     <hr className={styles.divider} />
                     <li className={styles.menuItem}>My Celebrations</li>
                     <li className={styles.menuItem}>My Wish Lists</li>

@@ -1,133 +1,78 @@
 "use client";
 
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 import styles from "./registration.module.css";
+import Error from "next/error";
 
-const Registration: React.FC = () => {
-  const [formData, setFormData] = useState({
-    email: "",
-    firstName: "",
-    lastName: "",
-    password: "",
-    dateOfBirth: "",
-  });
-  const [showPassword, setShowPassword] = useState(false);
-  const [successMessage, setSuccessMessage] = useState("");
+const RegisterPage: React.FC = () => {
+  const router = useRouter();
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form Data:", formData);
-    setSuccessMessage("Registration successful!");
-  };
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
+    try {
+      const response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Registration failed");
+      }
+
+      alert("Registration successful! Please log in.");
+      router.push("/login"); 
+    } catch (err : any) {
+      setError(err.message || "An unexpected error occured");
+    }
   };
 
   return (
     <div className={styles.container}>
-      <form onSubmit={handleSubmit} className={styles.form}>
+      <form onSubmit={handleRegister} className={styles.form}>
         <h2 className={styles.title}>Register</h2>
-
+        {error && <p className={styles.error}>{error}</p>}
         <div className={styles.inputGroup}>
           <label htmlFor="email" className={styles.label}>
-            Email:
+            Email
           </label>
           <input
             type="email"
             id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
             className={styles.input}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
-
-        <div className={styles.inputGroup}>
-          <label htmlFor="firstName" className={styles.label}>
-            First Name:
-          </label>
-          <input
-            type="text"
-            id="firstName"
-            name="firstName"
-            value={formData.firstName}
-            onChange={handleChange}
-            className={styles.input}
-            required
-          />
-        </div>
-
-        <div className={styles.inputGroup}>
-          <label htmlFor="lastName" className={styles.label}>
-            Last Name:
-          </label>
-          <input
-            type="text"
-            id="lastName"
-            name="lastName"
-            value={formData.lastName}
-            onChange={handleChange}
-            className={styles.input}
-            required
-          />
-        </div>
-
         <div className={styles.inputGroup}>
           <label htmlFor="password" className={styles.label}>
-            Password:
-          </label>
-          <div className={styles.passwordWrapper}>
-            <input
-              type={showPassword ? "text" : "password"}
-              id="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              className={styles.input}
-              required
-            />
-            <button
-              type="button"
-              className={styles.toggleButton}
-              onClick={togglePasswordVisibility}
-            >
-              {showPassword ? "Hide" : "Show"}
-            </button>
-          </div>
-        </div>
-
-        <div className={styles.inputGroup}>
-          <label htmlFor="dateOfBirth" className={styles.label}>
-            Date of Birth:
+            Password
           </label>
           <input
-            type="date"
-            id="dateOfBirth"
-            name="dateOfBirth"
-            value={formData.dateOfBirth}
-            onChange={handleChange}
+            type="password"
+            id="password"
             className={styles.input}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             required
           />
         </div>
-
         <button type="submit" className={styles.button}>
-          Sign Up
+          Register
         </button>
-
-        {successMessage && (
-          <p className={styles.successMessage}>{successMessage}</p>
-        )}
       </form>
     </div>
   );
 };
 
-export default Registration;
+export default RegisterPage;
