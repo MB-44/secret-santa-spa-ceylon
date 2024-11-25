@@ -1,7 +1,5 @@
 "use client";
 
-// pick a date page
-
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./step05.module.css";
@@ -18,10 +16,9 @@ const STEP05: React.FC = () => {
   const [validYears, setValidYears] = useState<number[]>([]);
 
   useEffect(() => {
-    // Calculate valid days, months, and years based on the current date
     const today = new Date();
     const currentDay = today.getDate();
-    const currentMonth = today.getMonth(); // 0-based index
+    const currentMonth = today.getMonth();
     const currentYear = today.getFullYear();
 
     const months = [
@@ -29,18 +26,14 @@ const STEP05: React.FC = () => {
       "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
     ];
 
-    // Set valid years (from current year onward)
     const futureYears = Array.from({ length: 21 }, (_, i) => currentYear + i);
     setValidYears(futureYears);
 
-    // Set valid months for the current year
-    const futureMonths =
-      year === String(currentYear)
+    const futureMonths = year === String(currentYear)
         ? months.slice(currentMonth)
         : months;
     setValidMonths(futureMonths);
 
-    // Set valid days for the selected month and year
     const daysInMonth = new Date(Number(year), months.indexOf(month) + 1, 0).getDate();
     const futureDays =
       year === String(currentYear) && months.indexOf(month) === currentMonth
@@ -64,13 +57,18 @@ const STEP05: React.FC = () => {
     router.push(`/step06?selectedDate=${encodeURIComponent(`${day}-${month}-${year}`)}`); // Navigate to the next step
   };
 
+  const handleBack = () => {
+    router.back();
+  };
+
+
   return (
     <div className={styles.container}>
       <div className={styles.card}>
         <h2 className={styles.title}>When are you going to celebrate?</h2>
 
         <div className={styles.datePicker}>
-          {/* Day Dropdown */}
+          
           <div className={styles.dropdown}>
             <button className={styles.dropdownButton}>{day}</button>
             <div className={styles.dropdownContent}>
@@ -86,7 +84,7 @@ const STEP05: React.FC = () => {
             </div>
           </div>
 
-          {/* Month Dropdown */}
+        
           <div className={styles.dropdown}>
             <button className={styles.dropdownButton}>{month}</button>
             <div className={styles.dropdownContent}>
@@ -102,7 +100,6 @@ const STEP05: React.FC = () => {
             </div>
           </div>
 
-          {/* Year Dropdown */}
           <div className={styles.dropdown}>
             <button className={styles.dropdownButton}>{year}</button>
             <div className={styles.dropdownContent}>
@@ -118,11 +115,16 @@ const STEP05: React.FC = () => {
             </div>
           </div>
         </div>
-
+        
+      <div className={styles.actions}>
+        <button className={styles.backButton} onClick={handleBack}>
+          Back
+        </button>
         <button className={styles.continueButton} onClick={handleDate}>
           Continue
         </button>
       </div>
+    </div>
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+// import NavigationBar from "./comp/navBar/navBar";
 import NavigationBar from "./comp/navBar/navBar";
 import "./globals.css";
 

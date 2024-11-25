@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #f8f9fa;
+    background-color: #f2c7c7;
   }
   
   .card {
@@ -16,12 +16,14 @@
   }
   
   .title {
+    text-align: left;
     font-size: 1.5rem;
     margin-bottom: 1rem;
     color: #333;
   }
   
   .description {
+    text-align: left;
     font-size: 1rem;
     margin-bottom: 1.5rem;
     color: #666;
@@ -43,12 +45,21 @@
     border-radius: 4px;
     cursor: pointer;
     text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
   
   .optionButton:hover {
     background-color: #e8e8e8;
   }
   
+  .icon {
+    font-size: 1.25rem;
+    color: #007bff;
+  }
+
+
   .groupPageButton {
     display: inline-block;
     background-color: transparent;

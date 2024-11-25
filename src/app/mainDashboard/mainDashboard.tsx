@@ -8,7 +8,7 @@ const MainDashboard: React.FC = () => {
   const router = useRouter();
 
   const handleCreateWishlist = () => {
-    router.push("/wishlist");
+    router.push("/step01-w");
   };
 
   const handleCreateGroup = () => {
@@ -17,14 +17,27 @@ const MainDashboard: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Welcome to Your Dashboard</h1>
+      <h1 className={styles.title}>Celebrate your secret santa with us</h1>
       <div className={styles.cards}>
-        <button className={styles.card} onClick={handleCreateWishlist}>
-          Create Your Wishlist
-        </button>
-        <button className={styles.card} onClick={handleCreateGroup}>
-          Create Your Group
-        </button>
+        {/* Wishlist Card */}
+        <div className={styles.card} onClick={handleCreateWishlist}>
+          <img
+            src="/images/wish-list-icon.png" /* Replace with your image path */
+            alt="Wishlist Icon"
+            className={styles.cardImage}
+          />
+          <button className={styles.cardButton}>Create Your Wishlist</button>
+        </div>
+
+        {/* Group Card */}
+        <div className={styles.card} onClick={handleCreateGroup}>
+          <img
+            src="/images/group-icon.png" /* Replace with your image path */
+            alt="Group Icon"
+            className={styles.cardImage}
+          />
+          <button className={styles.cardButton}>Create Your Group</button>
+        </div>
       </div>
     </div>
   );
