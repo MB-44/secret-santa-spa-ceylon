@@ -18,7 +18,6 @@ const STEP_01: React.FC = () => {
 
     return(
         <div className={styles.container}>
-            {/* <h2 className={styles.main_title}>Secret Santa Generator</h2> */}
             <div className={styles.card}>
                 <h3 className={styles.title}>What's your name?</h3>
                 <div className={styles.inputWrapper}>
@@ -35,16 +34,16 @@ const STEP_01: React.FC = () => {
                             onClick={() => setName("")}
                             aria-label="Clear name"
                         >
-                            X
+                            x
                         </button>
                     )}
                 </div>
                 <button className={styles.continueButton} onClick={handleContinue}>
                     Continue
                 </button>
-                <p className={styles.description}>
+                {/* <p className={styles.description}>
                     blah blah blah
-                </p>
+                </p> */}
             </div>
         </div>
     );

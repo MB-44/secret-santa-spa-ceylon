@@ -1,25 +1,34 @@
 .container {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start; /* Align content to the left */
   align-items: center;
   min-height: 100vh;
-  background-color: #f8f9fa;
+  background-color: #f2c7c7; /* Neutral background */
+  padding-left: 4rem; /* Add spacing from the left for alignment */
 }
 
 .card {
-  background: #ffffff;
+  background: linear-gradient(145deg, #ffffff, #f4f4f4); /* Subtle gradient for polished look */
   padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
+  border-radius: 12px; /* Smooth rounded corners */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow for depth */
+  max-width: 450px;
   text-align: center;
+  position: relative;
+  transition: transform 0.3s, box-shadow 0.3s; /* Smooth hover effect */
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
 }
 
 .title {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
+  font-weight: bold;
   margin-bottom: 1.5rem;
   color: #333;
-  text-align: left;
+  text-align: left; /* Align title to the left */
 }
 
 .datePicker {
@@ -34,23 +43,28 @@
 }
 
 .dropdownButton {
-  background-color: #f4f4f4;
+  background-color: #f0f0f0;
   color: #333;
   padding: 0.75rem 1rem;
   font-size: 1rem;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 8px; /* Smooth corners for consistency */
   cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s; /* Interactive feedback */
+}
+
+.dropdownButton:hover {
+  background-color: #e0e0e0; /* Subtle change on hover */
 }
 
 .dropdownContent {
   display: none;
-  /* border-color: #0056b3; */
   position: absolute;
   background-color: #ffffff;
   min-width: 120px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Dropdown shadow for depth */
   z-index: 1;
+  border-radius: 4px; /* Smooth corners */
 }
 
 .dropdown:hover .dropdownContent {
@@ -60,26 +74,55 @@
 .dropdownItem {
   padding: 0.5rem 1rem;
   cursor: pointer;
+  font-size: 1rem;
+  color: #333;
 }
 
 .dropdownItem:hover {
-  background-color: #f0f0f0;
+  background-color: #f0f0f0; /* Subtle highlight on hover */
 }
 
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.backButton {
+  background-color: #a9a5a5; /* Neutral gray for back button */
+  color: #232324; /* Dark text for contrast */
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px; /* Smooth corners */
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  width: 48%;
+  transition: background-color 0.3s ease, transform 0.3s;
+}
+
+.backButton:hover {
+  background-color: #8e8a8a; /* Slightly darker gray on hover */
+  transform: translateY(-2px); /* Subtle lift on hover */
+}
+
+
+
 .continueButton {
-  
-  border: #0056b3;
-  background-color: #c0c6cd;
-  color: #0f6df1;
+  background-color: #007bff; /* Blue for primary action */
+  color: white;
   padding: 0.75rem 1.5rem;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px; /* Smooth corners */
   font-size: 1rem;
+  font-weight: bold;
   cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s; /* Interactive feedback */
 }
 
 .continueButton:hover {
-  background-color: #b6c3d1;
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: translateY(-2px); /* Slight lift on hover */
 }
 
 @media (min-width: 768px) {
@@ -94,3 +137,5 @@
     position: absolute;
   }
 }
+
+

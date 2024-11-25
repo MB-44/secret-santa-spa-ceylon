@@ -35,7 +35,7 @@ const STEP06: React.FC = () => {
         <h2 className={styles.title}>How much should people spend?</h2>
 
         <div className={styles.options}>
-          {["$100", "$50", "$30", "$25", "$20"].map((budget) => (
+          {["LKR 30,000", "LKR 15,000", "LKR 10,000", "LKR 7,500", "LKR 5,000"].map((budget) => (
             <button
               key={budget}
               className={`${styles.budgetButton} ${

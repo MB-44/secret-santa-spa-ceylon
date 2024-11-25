@@ -13,9 +13,7 @@ const STEP_04: React.FC = () => {
             alert("Please enter a group name.");
             return;
         }
-
-        // alert(`Group Name: ${groupName}`);
-        router.push("/step05");
+        router.push(`/step05?groupName=${encodeURIComponent(groupName)}`);
     };
 
     return(

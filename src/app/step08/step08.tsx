@@ -3,12 +3,14 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 import styles from "./step08.module.css";
+import {FaEnvelope, FaWhatsapp, FaSms, FaLink} from "react-icons/fa";
 
 const STEP08: React.FC = () => {
   const router = useRouter();
 
   const handleClick = (method: string) => {
     // alert(`You selected: ${method}`);
+
   };
 
   return (
@@ -21,22 +23,33 @@ const STEP08: React.FC = () => {
         </p>
 
         <div className={styles.options}>
+          <button 
+            className={styles.optionButton}
+            onClick={() => handleClick("CopyInvitation")}
+          >
+            <FaLink className={styles.icon}/>
+            Invitation Link →
+          </button>
+          
           <button
             className={styles.optionButton}
             onClick={() => handleClick("Email")}
           >
+            <FaEnvelope className={styles.icon}/>
             Email →
           </button>
           <button
             className={styles.optionButton}
             onClick={() => handleClick("WhatsApp")}
           >
+            <FaWhatsapp className={styles.icon}/>
             WhatsApp →
           </button>
           <button
             className={styles.optionButton}
             onClick={() => handleClick("Text Message")}
           >
+            <FaSms className={styles.icon}/>
             Text Message →
           </button>
         </div>

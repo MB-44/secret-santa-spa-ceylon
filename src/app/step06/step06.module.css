@@ -1,98 +1,135 @@
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #f8f9fa;
+  display: flex;
+  justify-content: flex-start; /* Align content to the left */
+  align-items: center;
+  min-height: 80vh;
+  background-color: #f2c7c7; /* Soft pink background */
+  padding-left: 4rem; /* Add spacing from the left for alignment */
+}
+
+.card {
+  background: linear-gradient(145deg, #ffffff, #f4f4f4); /* Subtle gradient for polished look */
+  padding: 2rem;
+  border-radius: 12px; /* Smooth rounded corners */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow for depth */
+  max-width: 450px;
+  text-align: center;
+  position: relative;
+  transition: transform 0.3s, box-shadow 0.3s; /* Smooth hover effect */
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+.title {
+  text-align: left;
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  justify-content: center;
+}
+
+.budgetButton {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 8px; /* Smooth corners */
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  flex: 1 0 40%; /* Flexible width for responsiveness */
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.3s; /* Smooth transitions */
+}
+
+.budgetButton:hover {
+  background-color: #e8e8e8; /* Subtle highlight on hover */
+  transform: translateY(-2px); /* Subtle lift on hover */
+}
+
+.selected {
+  background-color: #007bff; /* Blue for selected state */
+  color: white;
+  border-color: #007bff;
+}
+
+.customInput {
+  margin-top: 0.5rem;
+  width: 80%;
+  padding: 0.5rem;
+  color: #333;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px; /* Smooth corners */
+  transition: border-color 0.3s ease, box-shadow 0.3s; /* Smooth focus effect */
+}
+
+.customInput:focus {
+  outline: none;
+  border-color: #007bff; /* Blue border on focus */
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.4); /* Glowing effect */
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.backButton {
+  background-color: #a9a5a5; /* Neutral gray for back button */
+  color: #232324; /* Dark text for contrast */
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px; /* Smooth corners */
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  width: 48%;
+  transition: background-color 0.3s ease, transform 0.3s;
+}
+
+.backButton:hover {
+  background-color: #8e8a8a; /* Slightly darker gray on hover */
+  transform: translateY(-2px); /* Subtle lift on hover */
+}
+
+.continueButton {
+  background-color: #007bff; /* Blue for primary action */
+  color: white;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px; /* Smooth corners */
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  width: 48%;
+  transition: background-color 0.3s ease, transform 0.3s;
+}
+
+.continueButton:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: translateY(-2px); /* Subtle lift on hover */
+}
+
+@media (min-width: 768px) {
+  .container {
+    justify-content: flex-start; /* Aligns content to the left */
   }
-  
+
   .card {
-    background: #ffffff;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    text-align: center;
+    margin-left: 10%; /* Adjust the left position */
+    transform: none; /* Center vertically */
+    top: 50%; /* Relative to the viewport */
+    position: absolute;
   }
-  
-  .title {
-    text-align: left;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: #333;
-  }
-  
-  .options {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
-    justify-content: center;
-  }
-  
-  .budgetButton {
-    background-color: #f4f4f4;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 0.75rem 1rem;
-    font-size: 1rem;
-    cursor: pointer;
-    flex: 1 0 40%;
-    text-align: center;
-  }
-  
-  .budgetButton:hover {
-    background-color: #e8e8e8;
-  }
-  
-  .selected {
-    background-color: #007bff;
-    color: white;
-    border-color: #007bff;
-  }
-  
-  .customInput {
-    margin-top: 0.5rem;
-    width: 80%;
-    padding: 0.5rem;
-    color: #333;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .customInput:focus {
-    outline: none;
-    border-color: #007bff;
-  }
-  
-  .actions {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .backButton,
-  .continueButton {
-    background-color: #007bff;
-    color: white;
-    padding: 0.75rem;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    cursor: pointer;
-    width: 48%;
-  }
-  
-  .backButton {
-    background-color: #e0e0e0;
-    color: #333;
-  }
-  
-  .backButton:hover {
-    background-color: #c0c0c0;
-  }
-  
-  .continueButton:hover {
-    background-color: #0056b3;
-  }
-  
+}

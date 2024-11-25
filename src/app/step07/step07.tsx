@@ -8,10 +8,8 @@ const STEP07: React.FC = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
 
-  // Retrieve group name from query parameter
   const groupName = searchParams.get("groupName") || "Your Group";
 
-  // State for the message
   const [message, setMessage] = useState<string>(
     `We're going to draw names for "${groupName}"! Make a wish list and draw a name so that everyone has time to buy a gift.`
   );
@@ -31,7 +29,6 @@ const STEP07: React.FC = () => {
       alert("Please enter a message for the group.");
       return;
     }
-    // alert(`Message Saved: ${message}`);
     router.push("/step08"); 
   };
 
