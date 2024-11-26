@@ -19,20 +19,19 @@ const MainDashboard: React.FC = () => {
     <div className={styles.container}>
       <h1 className={styles.title}>Celebrate your secret santa with us</h1>
       <div className={styles.cards}>
-        {/* Wishlist Card */}
+        
         <div className={styles.card} onClick={handleCreateWishlist}>
           <img
-            src="/images/wish-list-icon.png" /* Replace with your image path */
+            src="/images/wish-list-icon.png"
             alt="Wishlist Icon"
             className={styles.cardImage}
           />
           <button className={styles.cardButton}>Create Your Wishlist</button>
         </div>
 
-        {/* Group Card */}
         <div className={styles.card} onClick={handleCreateGroup}>
           <img
-            src="/images/group-icon.png" /* Replace with your image path */
+            src="/images/group-icon.png"
             alt="Group Icon"
             className={styles.cardImage}
           />

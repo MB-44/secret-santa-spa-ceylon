@@ -6,11 +6,14 @@ import STEP_01 from "./step01/step01";
 import MAIN_DASH_PAGE from "./mainDashboard/page";
 // import Login from "./login/login";
 // import Loginpage from "./login/page";
+// import IntroPage from "./intro/introduction";
+import INTRO_PAGE from "./intro/page";
 
 export default function Home() {
   return(
     <div>
-      <MAIN_DASH_PAGE/>
+      <INTRO_PAGE/>;
+      {/* <MAIN_DASH_PAGE/> */}
       {/* <Loginpage/> */}
     </div>
   );

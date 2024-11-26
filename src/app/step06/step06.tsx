@@ -1,14 +1,20 @@
 "use client";
 
 import React, { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import styles from "./step06.module.css";
 
 const STEP06: React.FC = () => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  
+  const groupName = searchParams.get("groupName") || "Your group";
+  const selectedDate = searchParams.get("selectedDate") || "No Date Chosen";
+  const members = JSON.parse(searchParams.get("members") || "[]"); 
+
   const [selectedBudget, setSelectedBudget] = useState<string | null>(null);
   const [customBudget, setCustomBudget] = useState<string>("");
   const [isEditingCustom, setIsEditingCustom] = useState(false);
-  const router = useRouter();
 
   const handleBudgetClick = (budget: string) => {
     setSelectedBudget(budget);
@@ -25,8 +31,15 @@ const STEP06: React.FC = () => {
       alert("Please select a budget.");
       return;
     }
-    // alert(`Selected Budget: ${selectedBudget}`);
-    router.push("/step07"); 
+    router.push(
+      `/step07?groupName=${encodeURIComponent(
+        groupName
+      )}&selectedDate=${encodeURIComponent(
+        selectedDate
+      )}&budget=${encodeURIComponent(
+        selectedBudget)}&members=${encodeURIComponent(
+          JSON.stringify(members))}`
+    ); 
   };
 
   return (

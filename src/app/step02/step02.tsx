@@ -3,9 +3,6 @@
 import React, {useState} from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import styles from "./step02.module.css";
-// import { json } from "stream/consumers";
-// import { useRouter } from "next/navigation";
-// import { defaultOverrides } from "next/dist/server/require-hook";
 
 const STEP_02: React.FC = () => {
     const searchParams = useSearchParams();
