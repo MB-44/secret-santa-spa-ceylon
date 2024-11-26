@@ -9,6 +9,9 @@ const STEP07: React.FC = () => {
   const router = useRouter();
 
   const groupName = searchParams.get("groupName") || "Your Group";
+  const selectedDate = searchParams.get("selectedDate") || "No Date Chosen";
+  const budget = searchParams.get("budget") || "No Budget Set";
+  const members = JSON.parse(searchParams.get("members") || "[]");
 
   const [message, setMessage] = useState<string>(
     `We're going to draw names for "${groupName}"! Make a wish list and draw a name so that everyone has time to buy a gift.`
@@ -29,7 +32,14 @@ const STEP07: React.FC = () => {
       alert("Please enter a message for the group.");
       return;
     }
-    router.push("/step08"); 
+    console.log("group name: ", groupName);
+    router.push(
+      `/step08?groupName=${encodeURIComponent(groupName)}&selectedDate=${encodeURIComponent(
+        selectedDate
+      )}&budget=${encodeURIComponent(budget)}&message=${encodeURIComponent(
+        message
+      )}&members=${encodeURIComponent(JSON.stringify(members))}`
+    );
   };
 
   return (

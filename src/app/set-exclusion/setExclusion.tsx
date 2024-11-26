@@ -11,7 +11,6 @@ const SetExclusions: React.FC = () => {
   const [exclusions, setExclusions] = useState<{ [key: string]: string[] }>({});
   const [activePerson, setActivePerson] = useState<string | null>(null);
 
-  // Parse members from query string
   useEffect(() => {
     const membersQuery = searchParams.get("members");
     if (membersQuery) {
@@ -38,8 +37,8 @@ const SetExclusions: React.FC = () => {
   };
 
   const handleContinue = () => {
-    // alert(`Exclusions set: ${JSON.strin.gify(exclusions)}`);
-    router.push("/step04"); // Replace with the next route in your app
+    // router.push("/step04");
+    router.push(`/step04?members=${encodeURIComponent(JSON.stringify(members))}`);
   };
 
   return (
@@ -74,7 +73,6 @@ const SetExclusions: React.FC = () => {
         </div>
       </div>
 
-      {/* Exclusion Modal */}
       {activePerson && (
         <div className={styles.modal}>
           <div className={styles.modalContent}>

@@ -1,11 +1,15 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import styles from "./step05.module.css";
 
 const STEP05: React.FC = () => {
   const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const [groupName, setGroupName] = useState<string>("");
+  const [members, setMembers] = useState<string[]>([]);
 
   const [day, setDay] = useState<string>("Day");
   const [month, setMonth] = useState<string>("Month");
@@ -14,6 +18,20 @@ const STEP05: React.FC = () => {
   const [validDays, setValidDays] = useState<number[]>([]);
   const [validMonths, setValidMonths] = useState<string[]>([]);
   const [validYears, setValidYears] = useState<number[]>([]);
+
+  useEffect(() => {
+    const groupNameQuery = searchParams.get("groupName");
+    const membersQuery = searchParams.get("members");
+
+    if (groupNameQuery) {
+      setGroupName(decodeURIComponent(groupNameQuery));
+    }
+
+    if (membersQuery) {
+      setMembers(JSON.parse(decodeURIComponent(membersQuery)));
+    }
+  }, [searchParams]);
+
 
   useEffect(() => {
     const today = new Date();
@@ -49,12 +67,15 @@ const STEP05: React.FC = () => {
     }
 
     const selectedDate = new Date(`${month} ${day}, ${year}`);
+
     if (selectedDate <= new Date()) {
       alert("Please select a future date.");
       return;
     }
 
-    router.push(`/step06?selectedDate=${encodeURIComponent(`${day}-${month}-${year}`)}`); // Navigate to the next step
+    router.push(
+      `/step06?groupName=${encodeURIComponent(groupName)}&selectedDate=${encodeURIComponent(selectedDate)}&members=${encodeURIComponent(JSON.stringify(members))}`);
+    // router.push(`/step06?selectedDate=${encodeURIComponent(`${day}-${month}-${year}`)}`); // Navigate to the next step
   };
 
   const handleBack = () => {

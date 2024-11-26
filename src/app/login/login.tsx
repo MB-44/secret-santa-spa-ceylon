@@ -28,16 +28,18 @@ const LoginPage: React.FC = () => {
       const { token } = await response.json();
 
       document.cookie  = `token=${token}; path=/; HttpOnly; SamSite=Strict`;
-      // Save token to localStorage or cookies
-      // localStorage.setItem("token", token);
+      
 
-      // Redirect to dashboard
-      alert("Login successful");
+      // alert("Login successful");
       router.push("/mainDashboard");
     } catch (err: any) {
       setError(err.message || "An unexpected error occurred");
     }
   };
+
+  const handleRegister = () => {
+    router.push("/registration");
+  }
 
   return (
     <div className={styles.container}>
@@ -75,7 +77,7 @@ const LoginPage: React.FC = () => {
         </button>
         <p className={styles.link}>
           Don’t have an account?{" "}
-          <a href="/register" className={styles.registerLink}>
+          <a onClick={handleRegister} className={styles.registerLink}>
             Register here
           </a>
         </p>

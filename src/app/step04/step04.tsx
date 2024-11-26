@@ -1,19 +1,29 @@
 "use client";
 
-import React, {useState} from "react";
-import { useRouter } from "next/navigation";
+import React, {useEffect, useState} from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import styles from "./step04.module.css";
 
 const STEP_04: React.FC = () => {
+    const [members, setMembers] = useState<string[]>([]);
     const [groupName, setGroupName] = useState("");
     const router = useRouter();
+    const searchParams = useSearchParams();
+
+    useEffect(() => {
+        const membersQuery = searchParams.get("members");
+        if (membersQuery) {
+            setMembers(JSON.parse(decodeURIComponent(membersQuery)));
+        }
+    }, [searchParams]);
+
 
     const handleContinue = () => {
         if (groupName.trim() === "") {
             alert("Please enter a group name.");
             return;
         }
-        router.push(`/step05?groupName=${encodeURIComponent(groupName)}`);
+        router.push(`/step05?groupName=${encodeURIComponent(groupName)}&members=${encodeURIComponent(JSON.stringify(members))}`);
     };
 
     return(

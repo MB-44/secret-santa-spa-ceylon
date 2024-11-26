@@ -62,6 +62,11 @@
   border-color: #007bff;
 }
 
+.selected:hover {
+  background-color: #0875ea;
+  color: #ffffff;
+}
+
 .customInput {
   margin-top: 0.5rem;
   width: 80%;

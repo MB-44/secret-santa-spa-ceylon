@@ -4,7 +4,7 @@ import NavigationBar from "./comp/navBar/navBar";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Santa",
+  title: "Santa Joy",
   description: "Spa Ceylon, Sri Lanka",
 };
 
